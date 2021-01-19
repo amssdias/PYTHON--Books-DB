@@ -5,7 +5,7 @@ from typing import List, Dict, Union
 Concerned with storing and retrieving books from a database.
 """
 
-
+Book = Dict[str, Union[str, int]]
 
 def create_book_table() -> None:
     with DatabaseConnection('data.db') as connection:
@@ -21,7 +21,7 @@ def add_book(name: str, author: str) -> None:
         cursor.execute('INSERT INTO books VALUES(?, ?, 0)', (name, author))
 
 
-def get_all_books() -> List[Dict(str, str)]:
+def get_all_books() -> List[Book]:
     with DatabaseConnection('data.db') as connection:
         cursor = connection.cursor()
 
